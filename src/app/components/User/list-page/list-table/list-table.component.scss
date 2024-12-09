@@ -1,0 +1,46 @@
+.table-container {
+  margin-top: 2%;
+}
+
+.button-container {
+  margin-left: 15%;
+  margin-right: 15%;
+  cursor: pointer;
+}
+
+.table-set {
+  border: 2px solid rgb(64, 117, 223);
+  border-radius: 5px;
+  padding: 0;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+// 針對平板作RWD設定
+@media (max-width: 768px) {
+  .table-set {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .mat-table {
+    width: 100%;
+  }
+}
+
+// 針對手機作RWD設定
+@media (max-width: 576px) {
+  .table-set {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+
+  .mat-header-cell, .mat-cell {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,41 @@
+.access {
+  background-color: #060606;
+  border-radius: 30px;
+  color: aliceblue;
+  margin-top: 1%;
+  margin-right: 1%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.card-border {
+  border: 2px solid rgb(64, 117, 223);
+  border-radius: 5px;
+  margin-top: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.surveyName-border {
+  border: 1px solid rgb(0, 0, 3);
+  border-radius: 5px;
+}
+
+.date-border {
+  border: 1px solid rgb(0, 0, 3);
+  border-radius: 5px;
+}
+
+.stats-time {
+  position: relative;
+  top: 5px;
+}
+
+// 調整表單在較小螢幕上的邊距
+@media (max-width: 768px) {
+  .card-border {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}

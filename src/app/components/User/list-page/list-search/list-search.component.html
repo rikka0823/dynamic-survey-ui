@@ -1,0 +1,36 @@
+<div class="button" style="margin-bottom: 8%;">
+  @if (getIsAdmin()) {
+    <button class="access " aria-label="Logout" (click)="logOut()">
+      登出
+    </button>
+  } @else {
+    <button class="access" aria-label="Login" style="position: absolute; top: 0; right: 0;" (click)=" logIn()">
+      登入
+    </button>
+  }
+</div>
+<div class="card p-4 card-border mt-5">
+    <div class="mb-3">
+      <label for="surveyName" class="form-label">問卷名稱：</label>
+      <input type="text" class="form-control surveyName-border" id="surveyName" [(ngModel)]="surveyName" >
+    </div>
+    <div class="mb-3 d-flex flex-column flex-sm-row align-items-center">
+      <label class="form-label me-2 stats-time align-items-center">統計時間：</label>
+      <input type="date"
+             class="form-control me-2 date-border w-100 w-sm-auto"
+             style="max-width: 150px;"
+             (change)="changeDate()"
+             [(ngModel)]="startDate">
+      <span class="me-2">到</span>
+       <!-- [disabled]: 必須先選開始時間，才能選結束時間 -->
+      <input type="date"
+             class="form-control me-2 date-border w-100 w-sm-auto"
+             style="max-width: 150px;"
+             [disabled]="!startDate"
+             [min]="startDate"
+             [(ngModel)]="endDate">
+      <button type="submit" class="btn btn-secondary mt-2 mt-sm-0" (click)="onSearch()">搜尋</button>
+    </div>
+</div>
+<!-- 顯示table -->
+<app-list-table></app-list-table>

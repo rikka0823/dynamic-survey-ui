@@ -1,0 +1,54 @@
+body {
+  background-color: #f4f7fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  // max-width: 100%;
+  margin-top: 50px;
+  padding: 0 15px;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.table th, .table td {
+  text-align: center;
+  padding: 12px 15px;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #4b4d4f;
+  color: white;
+  font-weight: bold;
+}
+
+.table td {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f9fafb;
+}
+
+.btn-preview {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; // 讓hover效果平滑
+}
+
+.btn-preview:hover {
+  background-color: #218838;
+  transform: translateY(-3px); // 往上移動
+}

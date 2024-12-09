@@ -1,0 +1,109 @@
+<h5 class="text-end" style="position: absolute; right: 20px; top: 20px; font-size: 1rem;" >
+  問卷時間： {{ questResData.startDate }} ~ {{ questResData.endDate }}
+</h5>
+<h2 style="display: flex; justify-content: center; margin-top: 5%;">{{ questResData.name }}</h2>
+<div style="margin-left: 12%; margin-right: 12%;"> {{ questResData.questionTopic }} </div>
+
+<div class="container" >
+  <div class="border p-4 rounded " style="border: 1px solid black !important; ">
+
+    <!-- 姓名 -->
+    <div class="mb-3 d-flex align-items-center">
+      <span style="color: red;">*</span>
+      <label for="name" class="form-label mb-0 me-2"> 姓名： </label>
+      <span> {{ questResData.userName }} </span>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3 d-flex align-items-center">
+      <span style="color: red;">*</span>
+      <label for="email" class="form-label mb-0 me-2"> Email： </label>
+      <span> {{ questResData.userEmail }} </span>
+    </div>
+
+    <!-- 手機 -->
+    <div class="mb-3 d-flex align-items-center">
+      <label for="phone" class="form-label mb-0 me-2"> 手機： </label>
+      <span> {{ questResData.userPhone }} </span>
+    </div>
+
+    <!-- 年齡 -->
+    <div class="mb-3 d-flex align-items-center">
+      <label for="age" class="form-label mb-0 me-2"> 年齡： </label>
+      <span> {{ questResData.userAge }} </span>
+    </div>
+    <br>
+
+    <!-- 題目列表 -->
+    <ol>
+      @for (quest of questResData.quesList; track $index) {
+        <li class="mb-4">
+
+          <!-- 題目區塊，加入黑色邊框、內邊距和圓角 -->
+          <div class="border border-dark p-3 rounded">
+            <h6>
+              @if (quest.type == 'multi') {
+                {{ quest.quesName }} （多選題）
+              }
+
+              @if (quest.type == 'single') {
+                {{ quest.quesName }} （單選題）
+              }
+
+              @if (quest.type == 'text') {
+                {{ quest.quesName }} （描述題）
+              }
+
+              @if (quest.required) {
+                <span style="color: red;"> * </span>
+              }
+            </h6>
+
+            <!-- 多選 -->
+            @if (quest.type == 'multi') {
+              <ol>
+                @for (option of quest.options; track $index) {
+                  @if (option.boxBoolean) {
+                    <li>
+                      <div>
+                        <span> {{ option.optionName }} </span>
+                      </div>
+                    </li>
+                  }
+                }
+              </ol>
+            }
+
+            <!-- 單選 -->
+            @if (quest.type == 'single') {
+              @if (quest.radioAnswer) {
+                @for (option of quest.options; track $index) {
+                  @if (quest.radioAnswer == option.code) {
+                    <span> {{ option.optionName }} </span>
+                  }
+                }
+              } @else {
+                <span> 無 </span>
+              }
+            }
+
+            <!-- 輸入框 -->
+            @if (quest.type == 'text') {
+              <span> {{ quest.answer }} </span>
+            }
+          </div>
+        </li>
+      }
+    </ol>
+
+
+     <!-- 按鈕 -->
+    <div class="d-flex justify-content-between mt-3"  style="padding-top: 2%;">
+      <button class="btn btn-secondary me-2" (click)="navigateToListRespond()"> 回上一頁 </button>
+      <button class="btn btn-primary" (click)="navigateToListPage()"> 儲存 </button>
+    </div>
+  </div>
+</div>
+
+
+

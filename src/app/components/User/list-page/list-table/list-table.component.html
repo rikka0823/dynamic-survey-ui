@@ -1,0 +1,103 @@
+  <div class="table-container">
+      <!-- 如果有權限才顯示 -->
+      @if (getIsAdmin()) {
+        <div class="button-container container">
+          <mat-icon aria-hidden="false" aria-label="Add" fontIcon="add" (click)="addSurvey()" style="cursor: pointer;"></mat-icon>
+          <mat-icon aria-hidden="false" aria-label="Edit" fontIcon="edit" (click)="editSurvey()" style="cursor: pointer;"></mat-icon>
+          <mat-icon aria-hidden="false" aria-label="Delete" fontIcon="delete" (click)="deleteQuiz()" style="cursor: pointer;"></mat-icon>
+        </div>
+      }
+
+    <div class="mat-elevation-z8 table-set">
+      <table mat-table [dataSource]="dataSource" class="table table-striped table-hover" style="margin-bottom: 0;" >
+
+        <!-- 參考網址：https://stackblitz.com/edit/angular-mat-table-checkbox-select-all-ivt1dw?file=app%2Ftable-selection-example.ts -->
+
+          @if (getIsAdmin()) {
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              @if (false) {
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()">
+              </mat-checkbox>
+              }
+
+            </th>
+            <td mat-cell *matCellDef="let row;">
+              @if (row.status != '進行中') {
+                <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)"
+                            (change)="onCheckboxChange(row.id, $event.checked)">
+              </mat-checkbox>
+              }
+            </td>
+          </ng-container>
+          }
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef style="color: aliceblue;">編號</th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef style="color: aliceblue;">名稱</th>
+
+            <td mat-cell *matCellDef="let element">
+
+              @if (!(element.status == '進行中')) {
+                {{element.name}}
+              } @else if ((element.status == '進行中') ) {
+                <a [routerLink]="navigateToQuiz(element)" (click)="getQuizId(element.id)"> {{element.name}} </a>
+              }
+              </td>
+
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef style="color: aliceblue;" >狀態</th>
+          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+
+        <!-- StartDate Column -->
+        <ng-container matColumnDef="startDate">
+          <th mat-header-cell *matHeaderCellDef style="color: aliceblue;" >開始時間</th>
+          <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+        </ng-container>
+
+        <!-- EndDate Column -->
+        <ng-container matColumnDef="endDate">
+          <th mat-header-cell *matHeaderCellDef style="color: aliceblue;">結束時間</th>
+          <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+        </ng-container>
+
+        <!-- Result Column -->
+        <ng-container matColumnDef="result">
+          <th mat-header-cell *matHeaderCellDef style="color: rgb(253, 253, 253);">結果</th>
+          <td mat-cell *matCellDef="let element">
+             <a [routerLink]="navigateToFeedBack()" (click)="getStatsId(element.id)"> {{element.result}} </a>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"
+         style="background-color: rgb(91, 88, 88);">
+        </tr>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+
+        ></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5]"
+                     [pageSize]="5"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
+
+
