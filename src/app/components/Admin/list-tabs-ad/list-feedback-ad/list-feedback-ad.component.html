@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="border p-4 rounded" style="border: 1px solid black !important;">
+    <table class="table table-striped">
+      <thead>
+          <tr>
+              <th>姓名</th>
+              <th>填寫時間</th>
+              <th>觀看</th>
+          </tr>
+      </thead>
+      <tbody>
+          @for (quest of this.ques; track $index) {
+              <tr>
+                <td>{{ quest.userName }}</td>
+                <td>{{ quest.fillinDate }}</td>
+                <td>
+                  <button class="btn btn-preview" (click)="navigateToPreview(quest.email)" >前往</button>
+                </td>
+            </tr>
+          }
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between"  style="padding-top: 2%;">
+      <button class="btn btn-secondary me-2" (click)="navigateToList()"> 回上一頁 </button>
+      <button (click)="navigateToStats()" class="btn btn-primary ms-2" style="border-radius: 5px;">下一頁</button>
+    </div>
+  </div>
+</div>
+
+
+

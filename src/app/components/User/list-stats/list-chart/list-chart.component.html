@@ -1,0 +1,31 @@
+<div class="container my-4">
+  @if (questData.labels.length != 0) {
+  <div class="card p-4 bg-white border-0 shadow-lg">
+    <h5 class="card-title text-center mb-4">{{ questData.questName }}</h5>
+    <div class="d-flex mb-4">
+      <!-- 左側的選項列表 -->
+        <div class="question-text flex-grow-1">
+          <ul class="list-group">
+            @for (label of questData.labels; track $index) {
+              <li class="list-group-item d-flex justify-content-between">
+                <span class="option-name"><strong>選項：</strong></span>
+                <span class="option-value">{{ questData.labels[$index] }}</span>
+                <span class="people-count"><strong>人數：</strong><span class="data-value">{{ questData.data[$index] }}</span></span>
+              </li>
+            }
+          </ul>
+        </div>
+        <!-- 右側的 canvas -->
+        <div class="canvas-wrapper flex-shrink-0 ms-4">
+          <canvas id="{{ dataId }}"></canvas>
+        </div>
+    </div>
+  </div>
+  }
+</div>
+
+
+
+
+
+

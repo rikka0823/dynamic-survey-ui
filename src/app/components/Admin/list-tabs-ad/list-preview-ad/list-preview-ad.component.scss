@@ -1,0 +1,57 @@
+// 使用小尺寸的表單輸入框
+.form-control-sm {
+  width: auto;
+  max-width: 200px;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+}
+
+
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* 主要儲存並發布按鈕 */
+.btn-publish {
+  background-color: #28a745;  /* 綠色背景，表示保存並發布 */
+  color: white;
+  border: none;
+  padding: 7px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-publish:hover {
+  background-color: #218838;  /* 懸停顏色 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}

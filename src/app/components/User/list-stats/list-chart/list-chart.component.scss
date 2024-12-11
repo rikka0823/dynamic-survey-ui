@@ -1,0 +1,80 @@
+.canvas-wrapper {
+  width: 100%;
+  max-width: 420px;
+  height: 240px;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.card {
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 1rem;
+}
+
+.list-group-item {
+  font-size: 1rem;
+  border: none;
+  padding: 12px 0;
+}
+
+
+.option-name {
+  font-weight: 500px;
+  color: #000000;
+}
+
+.option-value {
+  font-weight: 500;
+  color: #007bff;
+}
+
+.people-count {
+  font-weight: 500;
+  color: #444;
+}
+
+.data-value {
+  font-weight: 600;
+  color: #28a745;
+}
+
+.d-flex {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-group {
+  margin-top: 0;
+  padding: 0;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+// 列表項目懸停效果
+.list-group-item:hover {
+  border-radius: 8px;
+  background-color: #fef5f5;
+  transition: background-color 0.5s;
+}
+
+// 針對手機作RWD設定
+@media (max-width: 600px) {
+  .canvas-wrapper {
+    max-width: 100%;
+    height: 200px;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}
+
+
+
+
+

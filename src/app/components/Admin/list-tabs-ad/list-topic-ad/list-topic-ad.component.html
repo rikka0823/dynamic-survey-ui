@@ -1,0 +1,90 @@
+<div class="container" style="margin-top: 3%;">
+  <div class="border p-4 rounded" style="border: 1px solid black !important;  position: relative;">
+    <div class="mb-3">
+      <label for="quesName" class="form-label">問題：</label>
+      <input type="text" id="quesName" [(ngModel)]="quesName" placeholder="請輸入問題" class="form-control" style="border-radius: 5px; width: 30%;">
+    </div>
+    <br>
+    <div class="mb-3">
+      <label for="type" class="form-label">題型：</label>
+      <select id="type" [(ngModel)]="type" (change)="clearOption()" class="form-control" style="border-radius: 5px; width: 15%;">
+        <option value=""  disabled selected>請選擇題型</option>
+        <option value="single">單選題</option>
+        <option value="multi">多選題</option>
+        <option value="text">描述題</option>
+      </select>
+    </div>
+    <br>
+    <div class="mb-3">
+      <label for="required" class="form-label">必填：</label>
+      <input type="checkbox" id="required" [(ngModel)]="required" style="cursor: pointer;">
+    </div>
+
+    @if (type == 'single' || type == 'multi') {
+      @for (option of optionArray; track $index) {
+        <div class="mb-3 d-flex align-items-center">
+          <label for="option{{option.code}}" class="form-label me-2">選項：</label>
+          <input type="text" id="option{{option.code}}" [(ngModel)]="option.optionName" placeholder="請輸入選項內容" class="form-control" style="border-radius: 5px; width: 30%;">
+          <button (click)="removeOption(option.code)" class="btn btn-danger ms-2" style="border-radius: 5px;">刪除選項</button>
+        </div>
+      }
+      <button (click)="addOption()" class="btn btn-primary  me-2" style="border-radius: 5px;">添加選項</button>
+    }
+
+    @if (isEdit) {
+      <button (click)="saveEditQuest()" class="btn btn-success" style="border-radius: 5px;">確認編輯</button>
+    }
+
+    @if (!isEdit) {
+      <button (click)="addQuest()" class="btn btn-primary" style="border-radius: 5px;">加入問題</button>
+    }
+
+    <br><br>
+
+    <mat-icon aria-hidden="false" aria-label="Delete" fontIcon="delete" (click)="deleteQuest()" style="cursor: pointer;"></mat-icon>
+
+    <div class="quest-container">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr style="text-align: center;">
+            <th><input type="checkbox" [(ngModel)]="selectAll" (change)="deleteAll()" style="cursor: pointer;"></th>
+            <th>問題</th>
+            <th>選項</th>
+            <th>題型</th>
+            <th>必填</th>
+            <th>編輯</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (quest of questArray; track $index) {
+            <tr style="text-align: center;">
+              <td><input type="checkbox" [(ngModel)]="quest.selected" (change)="updateSelectedQuest(quest.quesId, quest.selected)" style="cursor: pointer;"></td>
+              <td>{{ quest.quesName }}</td>
+              <td class="optionNane">
+                <ol>
+                  @for (option of quest.options; track $index) {
+                    <li>{{ option.optionName }}</li>
+                  }
+                </ol>
+              </td>
+              <td> {{ (quest.type == 'text') ? '描述' : (quest.type == 'multi') ? '多選' : '單選' }} </td>
+              <td> {{ quest.required ? '是' : '否' }} </td>
+              <td><mat-icon aria-hidden="false" aria-label="Edit" fontIcon="edit" (click)="editQuest(quest.quesId)" style="cursor: pointer;"></mat-icon></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <br>
+
+    <div class="d-flex justify-content-between">
+      <button (click)="navigateToListSurvey()" class="btn btn-secondary" style="border-radius: 5px;">上一步</button>
+      <button (click)="navigateToListPreview()" class="btn btn-primary ms-2" style="border-radius: 5px;">預覽</button>
+    </div>
+  </div>
+</div>
+
+
+
+

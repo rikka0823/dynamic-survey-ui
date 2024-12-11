@@ -1,0 +1,101 @@
+<h5 class="text-end" style="position: absolute; right: 20px; top: 20px; font-size: 1rem;">
+  問卷時間： {{ quest?.startDate }} ~ {{ quest?.endDate }}
+</h5>
+<h2 style="display: flex; justify-content: center; margin-top: 3%;">{{ quest?.name }}</h2>
+<div class="container" style="padding-right: 2%; padding-left: 2%;">{{ quest?.description }}</div>
+
+<br>
+
+<div class="container">
+  <div class="border p-4 rounded" style="border: 1px solid black !important; position: relative;">
+    <div class="mb-3 d-flex align-items-center"><span style="color: red;">*</span><span>為必填</span></div>
+    <!-- 姓名 -->
+    <div class="mb-3 d-flex align-items-center">
+      <span style="color: red;">*</span>
+      <label for="name" class="form-label mb-0 me-2">姓名：</label>
+      <input type="text" class="form-control form-control-sm surveyName-border" id="name" name="name" placeholder="請輸入姓名" [(ngModel)]="userName">
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3 d-flex align-items-center">
+      <span style="color: red;">*</span>
+      <label for="email" class="form-label mb-0 me-2">Email：</label>
+      <input type="text" class="form-control form-control-sm surveyName-border" id="email" name="email" placeholder="請輸入郵件" [(ngModel)]="userEmail">
+    </div>
+
+    <!-- 手機 -->
+    <div class="mb-3 d-flex align-items-center">
+      <label for="phone" class="form-label mb-0 me-2">手機：</label>
+      <input type="text" class="form-control form-control-sm surveyName-border" id="phone" name="phone" placeholder="請輸入電話" [(ngModel)]="userPhone">
+    </div>
+
+    <!-- 年齡 -->
+    <div class="mb-3 d-flex align-items-center">
+      <label for="age" class="form-label mb-0 me-2">年齡：</label>
+      <input type="text" class="form-control form-control-sm surveyName-border" id="age" name="age" placeholder="請輸入年齡" [(ngModel)]="userAge">
+    </div>
+    <br>
+
+    <!-- 題目列表 -->
+    <ol>
+      @for (quest of saveDataArray; track $index) {
+        <li class="mb-4">
+
+          <!-- 題目區塊，加入黑色邊框、內距和圓角 -->
+          <div class="border border-dark p-3 rounded">
+            <h6>
+              @if (quest.type == 'multi') {
+                {{ quest.quesName }} （多選題）
+              }
+
+              @if (quest.type == 'single') {
+                {{ quest.quesName }} （單選題）
+              }
+
+              @if (quest.type == 'text') {
+                {{ quest.quesName }} （描述題）
+              }
+
+              @if (quest.required) {
+                <span style="color: red;">*</span>
+              }
+            </h6>
+
+            <!-- 多選 -->
+            @if (quest.type == 'multi') {
+              @for (option of quest.options; track $index) {
+                <div>
+                  <input type="checkbox" [(ngModel)]="option.boxBoolean">
+                  {{ option.optionName }}
+                </div>
+              }
+            }
+
+            <!-- 單選 -->
+            <!-- radio以name作為鍵，判斷這些radio是同一群組，只能對應到一個值 -->
+            <!-- value則是對應到ngModel中的變數 -->
+            @if (quest.type == 'single') {
+              @for (option of quest.options; track $index) {
+                <div>
+                  <input type="radio" name="{{quest.quesId}}" value="{{option.code}}"
+                         [(ngModel)]="quest.radioAnswer">
+                  {{ option.optionName }}
+                </div>
+              }
+            }
+
+            <!-- 輸入框 -->
+            @if (quest.type == 'text') {
+              <textarea [(ngModel)]="quest.answer" class="form-control"></textarea>
+            }
+          </div>
+        </li>
+      }
+    </ol>
+    <!-- 按鈕區 -->
+  <div class="d-flex justify-content-between mt-3"  style="padding-top: 2%;">
+    <button class="btn btn-secondary me-2" (click)="navigateToList()" >回上一頁</button>
+    <button class="btn btn-primary" (click)="navigateToPreview()" >預覽</button>
+  </div>
+  </div>
+</div>

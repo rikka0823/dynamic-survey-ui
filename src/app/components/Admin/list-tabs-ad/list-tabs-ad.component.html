@@ -1,0 +1,17 @@
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  @for (link of links; track link) {
+    <!-- (click)：點擊後會更新activeLink的值，設為當前選項卡的名稱，更新哪個選項被選中 -->
+    <!-- [active]：當和選項卡名稱相同時，會啟動預設CSS -->
+    <a mat-tab-link
+      [routerLink] = "[link.path]"
+      (click)="activeLink = link.name"
+      [active]="activeLink == link.name" [disabled]="link.status">
+      {{ link.name }}
+    </a>
+  }
+</nav>
+
+<!-- 點擊選項後，底下所顯示的內容 -->
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>

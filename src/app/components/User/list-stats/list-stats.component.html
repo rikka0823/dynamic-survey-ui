@@ -1,0 +1,6 @@
+ @for (quest of questStas?.questArray; track $index) {
+  <app-list-chart
+  [dataId]="quest.questId"
+  [questData]="quest"
+  ></app-list-chart>
+}
