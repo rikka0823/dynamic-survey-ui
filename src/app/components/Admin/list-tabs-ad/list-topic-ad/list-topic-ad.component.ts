@@ -48,7 +48,7 @@ export class ListTopicAdComponent {
 
     if (this.questService.isEdit) {
       quesDataRes = await firstValueFrom(this.questService.getQuesDataById(this.questService.quizId));
-
+      console.log(quesDataRes);
       if (this.questService.questTopicData.length == 0) {
         quesDataRes.quesList.map((item: any) => {
           const options = JSON.parse(item.options);
@@ -139,7 +139,8 @@ export class ListTopicAdComponent {
       return alert('請添加至少一個選項');
     }
 
-    this.quesId++;
+    // 使用現有問題的最大quesId來決定新問題的quesId
+    this.quesId = this.questArray.length > 0 ? Math.max(...this.questArray.map(q => q.quesId)) + 1 : 1;
 
     // 新建newQuest方便進行測試，增加維護性
     const newQuest = {
@@ -333,6 +334,6 @@ export class ListTopicAdComponent {
     this.saveQuest();
 
     this.router.navigate(['/list-preview-ad']);
-
+    console.log(this.questService.returnData);
   }
 }

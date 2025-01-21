@@ -22,7 +22,7 @@ export class ListPreviewComponent {
     private accessService: AccessService,
     private dateService: DateService,
     private http: HttpClient
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // 將qustResService資料帶到預覽頁
@@ -35,7 +35,7 @@ export class ListPreviewComponent {
   }
 
   navigateToListPage() {
-    let newAnswer: {[key: number] : Array<string>} = {};
+    let newAnswer: { [key: number]: Array<string> } = {};
 
     for (let item of this.questResService.questResData.quesList) {
 
@@ -43,23 +43,23 @@ export class ListPreviewComponent {
 
 
       if (type == 'text') {
-          newAnswer[quesId] = [answer];
+        newAnswer[quesId] = [answer];
       }
 
       if (type == 'single') {
-          if (radioAnswer) {
-              const selectedOption = options.find((option: any) => option.code == radioAnswer);
-              if (selectedOption) {
-                  newAnswer[quesId] = [selectedOption.optionName];
-              }
+        if (radioAnswer) {
+          const selectedOption = options.find((option: any) => option.code == radioAnswer);
+          if (selectedOption) {
+            newAnswer[quesId] = [selectedOption.optionName];
           }
+        }
       }
 
       if (type == 'multi') {
-          const selectedOptions = options.filter((option: any) => option.boxBoolean).map((option: any) => option.optionName);
-          if (selectedOptions.length > 0) {
-              newAnswer[quesId] = selectedOptions;
-          }
+        const selectedOptions = options.filter((option: any) => option.boxBoolean).map((option: any) => option.optionName);
+        if (selectedOptions.length > 0) {
+          newAnswer[quesId] = selectedOptions;
+        }
       }
 
     }
@@ -74,25 +74,23 @@ export class ListPreviewComponent {
       fillinDate: this.dateService.changeDateFormat(new Date())
     }
 
-    let code;
-    this.http.post('http://localhost:8080/quiz/fillin',  this.questResService.fillinData).subscribe((res: any) => {
+
+    this.http.post('http://localhost:8080/quiz/fillin', this.questResService.fillinData).subscribe((res: any) => {
       console.log(res);
-      code = res;
+      const code = res.code;
+      if (code != 200) {
+        return alert('請勿重複填寫');
+      }
+      console.log(this.questResService.fillinData);
+      // 儲存前淨空資料
+      this.questResService.questResData = "";
+      this.questResService.quizAllData = "";
+      this.questResService.fillinData = undefined;
+
+      alert('儲存成功');
+
+      this.router.navigate(['/list-search']);
     });
-
-    if (code != 200) {
-      return alert('請勿重複填寫');
-    }
-
-    console.log(this.questResService.fillinData);
-    // 儲存前淨空資料
-    this.questResService.questResData = "";
-    this.questResService.quizAllData = "";
-    this.questResService.fillinData = undefined;
-
-    alert('儲存成功');
-
-    this.router.navigate(['/list-search']);
   }
 
   getIsAdmin(): boolean {

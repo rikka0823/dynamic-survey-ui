@@ -2,7 +2,7 @@
   <div class="border p-4 rounded" style="border: 1px solid black !important;  position: relative;">
     <div class="mb-3">
       <label for="surveyName" class="form-label">問卷名稱：</label>
-      <input type="text" class="form-control survey-border" id="surveyName" [(ngModel)]="surveyName" >
+      <input type="text" class="form-control survey-border" id="surveyName" [(ngModel)]="surveyName" style="width: 50%;" >
     </div>
     <div class="mb-3">
       <label for="surveyTopic" class="form-label">問卷說明：</label>
@@ -12,7 +12,7 @@
       <label class="form-label me-2 mar" style="margin-top: 10px;">開始時間：</label>
       <input type="date"
              class="form-control me-2 date-border w-100 w-sm-auto"
-             style="max-width: 150px;"
+             style="max-width: 180px;"
              [min]="minDate"
              [max]="maxDate"
              (change)="changeDate()"
@@ -22,7 +22,7 @@
        <!-- [disabled]: 必須先選開始時間，才能選結束時間 -->
       <input type="date"
              class="form-control me-2 date-border w-100 w-sm-auto"
-             style="max-width: 150px;"
+             style="max-width: 180px;"
              [disabled]="!startDate"
              [min]="startDate"
              [max]="endMaxDate"

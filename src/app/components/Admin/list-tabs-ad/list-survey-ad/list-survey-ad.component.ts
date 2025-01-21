@@ -37,7 +37,6 @@ export class ListSurveyAdComponent {
       let quizData!: QuizData;
 
       quizDataRes = await firstValueFrom(this.questService.getQuizDataById(quizId));
-
       if (quizDataRes && quizDataRes.quiz) {
         quizData = {
           id: quizDataRes.quiz.id,

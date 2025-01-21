@@ -29,7 +29,7 @@ export class ListChartComponent {
       datasets: [
         {
           // 上方分類文字
-          label: '人數',
+          label: '次數',
           borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1,
           // 數據

@@ -18,14 +18,14 @@
       <label class="form-label me-2 stats-time align-items-center">統計時間：</label>
       <input type="date"
              class="form-control me-2 date-border w-100 w-sm-auto"
-             style="max-width: 150px;"
+             style="max-width: 180px;"
              (change)="changeDate()"
              [(ngModel)]="startDate">
       <span class="me-2">到</span>
        <!-- [disabled]: 必須先選開始時間，才能選結束時間 -->
       <input type="date"
              class="form-control me-2 date-border w-100 w-sm-auto"
-             style="max-width: 150px;"
+             style="max-width: 180px;"
              [disabled]="!startDate"
              [min]="startDate"
              [(ngModel)]="endDate">
