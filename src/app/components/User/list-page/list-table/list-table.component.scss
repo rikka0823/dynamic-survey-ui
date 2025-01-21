@@ -5,7 +5,6 @@
 .button-container {
   margin-left: 15%;
   margin-right: 15%;
-  cursor: pointer;
 }
 
 .table-set {
@@ -43,4 +42,8 @@
   .mat-header-cell, .mat-cell {
     font-size: 14px;
   }
+}
+
+th  {
+  size: 50px;
 }

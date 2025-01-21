@@ -1,13 +1,26 @@
 .access {
-  background-color: #060606;
-  border-radius: 30px;
-  color: aliceblue;
+  background-color: #ffffff;
+  border-radius: 25px;
+  color: #000000;
   margin-top: 1%;
   margin-right: 1%;
+  padding: 2px 5px;
   position: absolute;
+  font-weight: 500;
   top: 0;
   right: 0;
+  border: none;
 }
+
+.access:hover {
+  background-color: #6c6e72; /* 懸停時變為稍微淺一些的深灰色 */
+  transform: scale(1.05); /* 懸停時輕微放大按鈕 */
+}
+
+.access:focus {
+  outline: none; /* 移除按鈕聚焦時的外圍輪廓 */
+}
+
 
 .card-border {
   border: 2px solid rgb(64, 117, 223);
