@@ -5,8 +5,6 @@ import { Injectable } from "@angular/core";
 })
 
 export class AccessService {
-  // 管理權限狀態
-  // private isAdmin = false;
   private isAdmin: boolean;
 
   constructor() {
@@ -14,20 +12,20 @@ export class AccessService {
     this.isAdmin = storedIsAdmin ? JSON.parse(storedIsAdmin) : false;
   }
 
+  // 獲取登入狀態
   getIsAdmin(): boolean {
     return this.isAdmin;
   }
 
+  // 清除登入狀態
   setIsAdmin(isAdmin: boolean) {
     this.isAdmin = isAdmin;
     sessionStorage.setItem('isAdmin', JSON.stringify(isAdmin));
   }
 
-
+  // 清除登入狀態
   clearIsAdmin() {
     this.isAdmin = false;
     sessionStorage.removeItem('isAdmin');
   }
-
 }
-

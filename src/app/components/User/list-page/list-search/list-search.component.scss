@@ -13,14 +13,13 @@
 }
 
 .access:hover {
-  background-color: #6c6e72; /* 懸停時變為稍微淺一些的深灰色 */
-  transform: scale(1.05); /* 懸停時輕微放大按鈕 */
+  background-color: #6c6e72; // 懸停時變為稍微淺一些的深灰色
+  transform: scale(1.05); // 懸停時輕微放大按鈕
 }
 
 .access:focus {
-  outline: none; /* 移除按鈕聚焦時的外圍輪廓 */
+  outline: none; // 移除按鈕聚焦時的外圍輪廓
 }
-
 
 .card-border {
   border: 2px solid rgb(64, 117, 223);

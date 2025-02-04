@@ -27,6 +27,7 @@ export class DateService {
     }
   }
 
+  // 增加天數
   addDate(dateData: Date, addDate: number) {
     dateData.setDate(dateData.getDate() + addDate);
     return dateData;

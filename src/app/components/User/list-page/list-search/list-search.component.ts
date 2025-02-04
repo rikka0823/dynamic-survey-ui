@@ -10,9 +10,9 @@ import { AccessService } from '../../../../@services/access.service';
   selector: 'app-list-search',
   standalone: true,
   imports: [FormsModule,
-            ListTableComponent,
-            MatIconModule,
-            ],
+    ListTableComponent,
+    MatIconModule,
+  ],
   templateUrl: './list-search.component.html',
   styleUrl: './list-search.component.scss'
 })
@@ -39,16 +39,19 @@ export class ListSeacchComponent {
     this.maxDate = this.dateService.changeDateFormat(this.dateService.addDate(new Date(), 30));
   }
 
+  // 登入
   logIn() {
     this.accessService.setIsAdmin(true);
     this.router.navigate(['/list-logIn-ad'])
   }
 
+  // 登出
   logOut() {
     this.accessService.setIsAdmin(false);
     window.location.reload();
   }
 
+  // 獲取登入狀態
   getIsAdmin(): boolean {
     return this.accessService.getIsAdmin();
   }
@@ -58,7 +61,7 @@ export class ListSeacchComponent {
     this.endMaxDate = this.dateService.changeDateFormat(this.dateService.addDate(new Date(this.startDate), 30));
   }
 
-  // 模糊搜尋
+  // 即時搜尋
   onSearch() {
     this.listTableComponent.searchList(this.surveyName, this.startDate, this.endDate);
 

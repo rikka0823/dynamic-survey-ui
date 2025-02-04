@@ -10,6 +10,7 @@ export class StatsService {
 
   constructor(private http: HttpClient) {}
 
+  // 依照問卷 id 獲得統計資料
   getStatsDataById(id: number) {
     return this.http.get<any>('http://localhost:8080/quiz/statistics?quizId=' + id);
   }

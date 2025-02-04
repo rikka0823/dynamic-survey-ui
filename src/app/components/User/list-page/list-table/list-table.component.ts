@@ -18,7 +18,8 @@ import { QuestService, QuizData } from '../../../../@services/quest.service';
 @Component({
   selector: 'app-list-table',
   standalone: true,
-  imports: [MatTableModule,
+  imports: [
+    MatTableModule,
     MatPaginatorModule,
     RouterLink,
     MatCheckboxModule,
@@ -35,20 +36,25 @@ export class ListTableComponent implements AfterViewInit {
   quizData: QuizData[] = [];
   selectedIds: number[] = []; // 儲存被選中的id
 
-
-
-
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  constructor(
+    private router: Router,
+    private accessService: AccessService,
+    private http: HttpClientService,
+    private questService: QuestService,
+    private dateService: DateService,
+    private questResService: QuestResService,
+    private statsService: StatsService,
+    private feedBackService: FeedBackService
+  ) {}
 
   ngOnInit(): void {
     this.addSelect();
 
     this.questService.getQuizData().subscribe((res: any) => {
       const quizData = res.quizList;
-
-      // 使用 for 迴圈來過濾資料
       const tableData: PeriodicElement[] = [];
 
+      // 使用 for 迴圈來過濾資料
       for (let i = 0; i < quizData.length; i++) {
         const quiz = quizData[i];
         let status: string;
@@ -92,19 +98,16 @@ export class ListTableComponent implements AfterViewInit {
     });
   }
 
-  constructor(
-    private router: Router,
-    private accessService: AccessService,
-    private http: HttpClientService,
-    private questService: QuestService,
-    private dateService: DateService,
-    private questResService: QuestResService,
-    private statsService: StatsService,
-    private feedBackService: FeedBackService
-  ) { }
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
 
-  // 初始化後，後面的組件或service等如有渲染，
-  // 狀態除非重整，不然無法再次初始化，故需要使用ngDoCheck()偵測頁面的值，變更觸發
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator!;
+  }
+
+  /*
+    初始化後，後面的組件或service等如有渲染，
+    狀態除非重整，不然無法再次初始化，故需要使用ngDoCheck()偵測頁面的值，變更觸發
+  */
   ngDoCheck(): void {
     this.displayedColumns = ['id', 'name', 'status', 'startDate', 'endDate', 'result'];
     this.addSelect();
@@ -114,10 +117,6 @@ export class ListTableComponent implements AfterViewInit {
     if (this.accessService.getIsAdmin()) {
       this.displayedColumns.unshift('select'); // 將'select'放入陣列最前面
     }
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator!;
   }
 
   addSurvey() {
@@ -328,7 +327,3 @@ export interface PeriodicElement {
   result: string;
   description: string;
 }
-
-
-
-

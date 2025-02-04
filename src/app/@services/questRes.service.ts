@@ -5,7 +5,6 @@ import { Injectable } from "@angular/core";
 })
 
 export class QuestResService {
-  // 暫存表單回覆資料
   questResData!: any;
   quizAllData!: any;
   quizId!: number;
