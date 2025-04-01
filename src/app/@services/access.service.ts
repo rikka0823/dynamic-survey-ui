@@ -17,7 +17,7 @@ export class AccessService {
     return this.isAdmin;
   }
 
-  // 清除登入狀態
+  // 設定登入狀態
   setIsAdmin(isAdmin: boolean) {
     this.isAdmin = isAdmin;
     sessionStorage.setItem('isAdmin', JSON.stringify(isAdmin));
