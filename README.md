@@ -21,6 +21,10 @@
 - **Bootstrap 5**：用於響應式設計，讓介面適用各種設備。
 - **Chart.js**：用於統計數據的圖表化展示。
 
+## Page Display
+
+畫面展示，詳見於 [`dynamic-survey-ui.pdf`](https://drive.google.com/file/d/1dzu0TgkuzG69yOUdk_L7OXLHDWJ_Ihp8/view?usp=sharing)
+
 ## API Endpoints
 
 此應用通過與後端的 RESTful API 進行交互，以下是主要的 API 端點：
