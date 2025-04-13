@@ -23,7 +23,7 @@
 
 ## Page Display
 
-畫面展示，詳見於 [`dynamic-survey-ui.pdf`](https://drive.google.com/file/d/1dzu0TgkuzG69yOUdk_L7OXLHDWJ_Ihp8/view?usp=sharing)
+畫面展示，詳見於 [`dynamic-survey-ui.pdf`](https://drive.google.com/file/d/1dzu0TgkuzG69yOUdk_L7OXLHDWJ_Ihp8/view?usp=sharing)。
 
 ## API Endpoints
 
