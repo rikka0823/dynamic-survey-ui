@@ -68,4 +68,6 @@
 
 ## 後端應用
 
-後端應用負責提供用戶問卷與資料庫相關操作功能，並通過 RESTful API 與前端進行串接。後端專案請參考 [`dynamic-survey-api`](https://github.com/rikka0823/dynamic-survey-api/tree/main)。
+後端應用負責提供用戶問卷與資料庫相關操作功能，並通過 RESTful API 與前端進行串接。
+
+後端專案請參考 [`dynamic-survey-api`](https://github.com/rikka0823/dynamic-survey-api/tree/main)。
