@@ -27,7 +27,7 @@
 
 ## Page Previews
 
-畫面預覽，詳見於 [`dynamic-survey-ui.pdf`](https://drive.google.com/file/d/1dzu0TgkuzG69yOUdk_L7OXLHDWJ_Ihp8/view?usp=sharing)。
+畫面預覽，詳見於 [`dynamic-survey-ui.pdf`](https://drive.google.com/file/d/1mtj04k94K5IXrfcq_4AQXobYON9VEPkq/view?usp=sharing)。
 
 ## API Endpoints
 
