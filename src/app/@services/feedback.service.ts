@@ -13,6 +13,6 @@ export class FeedBackService {
 
   // 依問卷 id 獲取回饋資料
   getFeedBackData(quizId: number) {
-    return this.http.get<any>('http://localhost:8080/quiz/feedback?quizId=' + quizId);
+    return this.http.get<any>('/api/quiz/feedback?quizId=' + quizId);
   }
 }
