@@ -4,6 +4,8 @@
 
 後端 API，詳見於 [`dynamic-survey-api`](https://github.com/rikka0823/dynamic-survey-api/tree/main)。
 
+前後端整合，詳見於 [`dynamic-survey`](https://github.com/rikka0823/dynamic-survey)。
+
 ## Project Structure
 
 專案架構（Figma），請參考 [`動態問卷系統`](https://www.figma.com/design/7jcsPZxB0Q26WYPpvk3tzr/%E5%8B%95%E6%85%8B%E5%95%8F%E5%8D%B7%E7%B3%BB%E7%B5%B1-Template_For_Class-)。
@@ -70,8 +72,14 @@
 - `POST /account/login`  
   用戶登入，根據帳號密碼進行身份驗證。
 
-## 後端應用
+## Backend Application
 
 後端應用負責提供用戶問卷與資料庫相關操作功能，並通過 RESTful API 與前端進行串接。
 
 後端專案請參考 [`dynamic-survey-api`](https://github.com/rikka0823/dynamic-survey-api/tree/main)。
+
+## Fullstack Application
+
+採用 Docker Compose 的三層式架構（three tier architecture），前端（ui）、後端（api）、資料庫（db）個別容器化及整合的技術，簡化部署流程。
+
+前後端整合專案請參考 [`dynamic-survey`](https://github.com/rikka0823/dynamic-survey)。
