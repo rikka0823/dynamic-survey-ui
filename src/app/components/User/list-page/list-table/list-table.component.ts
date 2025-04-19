@@ -144,7 +144,7 @@ export class ListTableComponent implements AfterViewInit {
       endDate: chooseEDate
     };
 
-    this.http.postApi('http://localhost:8080/quiz/search', searchData).subscribe((res: any) => {
+    this.http.postApi('/api/quiz/search', searchData).subscribe((res: any) => {
       const quizData = res.quizList;
 
       // 使用 for 迴圈來過濾資料
@@ -233,7 +233,7 @@ export class ListTableComponent implements AfterViewInit {
     let quizIdList = this.selectedIds;
     let deleteList = { 'quizIdList': quizIdList };
 
-    this.http.postApi('http://localhost:8080/quiz/delete', deleteList).subscribe((res: any) => {
+    this.http.postApi('/api/quiz/delete', deleteList).subscribe((res: any) => {
       alert('確認刪除');
 
       // 清空選中的 quiz ID 和選擇狀態

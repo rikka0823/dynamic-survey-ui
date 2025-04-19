@@ -35,7 +35,7 @@ export class ListRespondComponent {
   async ngOnInit(): Promise<void> {
     let quesListRes!: any;
 
-    quesListRes = await firstValueFrom(this.http.getApi('http://localhost:8080/quiz/getQuesData?quizId=' + this.questResService.quizId));
+    quesListRes = await firstValueFrom(this.http.getApi('/api/quiz/getQuesData?quizId=' + this.questResService.quizId));
 
     let newQuesList: any[] = [];
     quesListRes.quesList.map((item: any) => {

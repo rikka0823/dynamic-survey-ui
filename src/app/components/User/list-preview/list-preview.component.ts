@@ -75,7 +75,7 @@ export class ListPreviewComponent {
     }
 
 
-    this.http.post('http://localhost:8080/quiz/fillin', this.questResService.fillinData).subscribe((res: any) => {
+    this.http.post('/api/quiz/fillin', this.questResService.fillinData).subscribe((res: any) => {
       console.log(res);
       const code = res.code;
       if (code != 200) {

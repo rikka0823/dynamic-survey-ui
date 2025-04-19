@@ -29,7 +29,7 @@ export class ListLogInAdComponent {
       password: this.password
     };
 
-    this.http.post<Login>('http://localhost:8080/account/login', user).subscribe({
+    this.http.post<Login>('/api/account/login', user).subscribe({
       next: (result: Login) => {
         if (result.code != '200') {
           alert('請重新輸入電子郵件、密碼');

@@ -52,7 +52,7 @@ export class ListPreviewAdComponent {
     console.log(this.questService.isEdit);
 
     if (!this.questService.isEdit) {
-      this.http.postApi('http://localhost:8080/quiz/create', this.returnData).subscribe(
+      this.http.postApi('/api/quiz/create', this.returnData).subscribe(
         (res: any) => {
           console.log(res);
           const code = res.code;
@@ -72,7 +72,7 @@ export class ListPreviewAdComponent {
         }
       );
     } else {
-      this.http.postApi('http://localhost:8080/quiz/update', this.returnData).subscribe(
+      this.http.postApi('/api/quiz/update', this.returnData).subscribe(
         (res: any) => {
           console.log(res);
           const code = res.code;
@@ -114,7 +114,7 @@ export class ListPreviewAdComponent {
     };
 
     if (!this.questService.isEdit) {
-      this.http.postApi('http://localhost:8080/quiz/create', this.returnData).subscribe(
+      this.http.postApi('/api/quiz/create', this.returnData).subscribe(
         (res: any) => {
           console.log(res);
           const code = res.code;
@@ -133,7 +133,7 @@ export class ListPreviewAdComponent {
         }
       );
     } else {
-      this.http.postApi('http://localhost:8080/quiz/update', this.returnData).subscribe(
+      this.http.postApi('/api/quiz/update', this.returnData).subscribe(
         (res: any) => {
           console.log(res);
           const code = res.code;
