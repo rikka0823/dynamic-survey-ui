@@ -26,6 +26,7 @@
 - **Angular Material**：使用官方 UI 元素，便於構建表單、按鈕等元件。
 - **Bootstrap 5**：用於響應式設計，讓介面適用各種設備。
 - **Chart.js**：用於統計數據的圖表化展示。
+- **Nginx**：作為靜態網頁資源的存放伺服器，並以反向代理（Reverse Proxy）的技術，將前端 Angular 應用程式的請求路由轉向後端的 Spring Boot 服務。
 
 ## Page Previews
 
